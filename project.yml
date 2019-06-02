@@ -1,15 +1,35 @@
 name: therbe
+options:
+  generateEmptyDirectories: true
+  createIntermediateGroups: true
 targets:
   therbe-app:
     type: application
     platform: [iOS, macOS, tvOS, watchOS]
     dependencies:
-      - target: therbe-framework_${platform}
+      - target: therbe-framework-${platform}
+    info:
+      path: Application/Info_${platform}.plist
+      properties:
+        CFBundleIdentifier: com.brightdigit.therbe-app-${platform}
     sources:
-      - Application/
+      - Application/Sources/common
+      - Application/Sources/${platform}
+    settings: 
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.brightdigit.therbe-app-${platform} 
   therbe-framework:
+    name: therbe-framework-${platform}
     type: framework
     platform: [iOS, macOS, tvOS, watchOS]
+    settings:
+      base:
+        PRODUCT_NAME: Therbe
+    info:
+      path: Framework/Info_${platform}.plist
+      properties:
+        CFBundleIdentifier: com.brightdigit.therbe-framework-${platform}
     sources:
-      - Framework/
+      - Framework/Sources/common
+      - Framework/Sources/${platform}
         
