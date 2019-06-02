@@ -19,6 +19,7 @@
 		B34F01C422A300D800AE50E9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1020;
 			};
 			buildConfigurationList = B34F01C722A300D800AE50E9 /* Build configuration list for PBXProject "therbe" */;
@@ -27,8 +28,10 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = B34F01C322A300D800AE50E9;
+			productRefGroup = B34F01C322A300D800AE50E9;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
