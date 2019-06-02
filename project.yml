@@ -5,13 +5,14 @@ options:
 targets:
   therbe-app:
     type: application
-    platform: [iOS, macOS, tvOS, watchOS]
+    platform: [iOS, macOS, watchOS]
     dependencies:
       - target: therbe-framework-${platform}
     info:
       path: Application/Info_${platform}.plist
       properties:
         CFBundleIdentifier: com.brightdigit.therbe-app-${platform}
+        CFBundleDisplayName: Therbe
     sources:
       - Application/Sources/common
       - Application/Sources/${platform}
