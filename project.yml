@@ -1,0 +1,15 @@
+name: therbe
+targets:
+  therbe-app:
+    type: application
+    platform: [iOS, macOS, tvOS, watchOS]
+    dependencies:
+      - target: therbe-framework_${platform}
+    sources:
+      - Application/
+  therbe-framework:
+    type: framework
+    platform: [iOS, macOS, tvOS, watchOS]
+    sources:
+      - Framework/
+        
