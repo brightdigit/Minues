@@ -5,5 +5,6 @@
 //  Created by Leo Dion on 6/2/19.
 //
 
-import Foundation
+import Cocoa
 
+_ = NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)

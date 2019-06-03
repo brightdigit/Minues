@@ -14,6 +14,7 @@ targets:
       properties:
         CFBundleIdentifier: com.brightdigit.therbe-app-iOS
         CFBundleDisplayName: Therbe
+        UILaunchStoryboardName: LaunchScreen
     sources:
       - path: Application/Sources/common
       - path: Application/Sources/iOS
@@ -30,6 +31,7 @@ targets:
       properties:
         CFBundleIdentifier: com.brightdigit.therbe-app-macOS
         CFBundleDisplayName: Therbe
+        NSPrincipalClass: $(TARGET_NAME:c99extidentifier).Application
     sources:
       - path: Application/Sources/common
       - path: Application/Sources/macOS
