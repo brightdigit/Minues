@@ -50,6 +50,7 @@ targets:
           NSExtensionAttributes:
             WKAppBundleIdentifier : com.brightdigit.therbe-app-iOS.app-watchOS
           NSExtensionPointIdentifier: com.apple.watchkit
+        WKExtensionDelegateClassName: $(PRODUCT_MODULE_NAME).ExtensionDelegate
     sources:
       - Application/Sources/common
       - Application/Sources/watchOS/Extension
@@ -68,12 +69,15 @@ targets:
         CFBundleDisplayName: Therbe
         WKWatchKitApp: true
         WKCompanionAppBundleIdentifier: com.brightdigit.therbe-app-iOS
+        CFBundleIcons: {}
+        CFBundleIcons~ipad: {}
     sources:
       - path: Application/Sources/common
       - path: Application/Sources/watchOS/Application
     settings: 
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.brightdigit.therbe-app-watchOS
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
   therbe-framework:
     name: therbe-framework-${platform}
     type: framework
