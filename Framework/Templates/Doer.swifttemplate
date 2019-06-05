@@ -1,0 +1,31 @@
+
+protocol Container {
+associatedtype ProtocolMetaType
+var types : [ProtocolMetaType] { get }
+}
+
+<% for protocolType in types.protocols { -%>
+<%_ %>struct <%= protocolType.name %>Container : Container {
+fileprivate init () {}
+typealias ProtocolMetaType = <%= protocolType.name %>.Type
+let types : [ProtocolMetaType] = [
+  <% for type in types.implementing[protocolType.name] { -%>
+  <%_ %><%= type.name %>.self,
+  <% } %>]
+}
+<% } %>
+
+struct MetaContainer {
+public static let shared = MetaContainer()
+fileprivate init () {}
+<% for protocolType in types.protocols { -%>
+let _<%= protocolType.name  %> = <%= protocolType.name %>Container()
+<% } %>
+func types<T>(implements: T.Type) -> [T]? {
+<% for protocolType in types.protocols { -%>
+if T.self == <%= protocolType.name %>.Type.self {
+return (_<%= protocolType.name  %>.types as! [T])
+}<% } %>
+return nil
+}
+}
