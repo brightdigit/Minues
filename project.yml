@@ -3,12 +3,24 @@ options:
   generateEmptyDirectories: true
   createIntermediateGroups: true
 targets:
+  therbe-app-watchOS:
+    type: application
+    platform: watchOS
+    dependencies:
+      - target: therbe-app-watchOS.watchkitapp
+    settings: 
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.brightdigit.therbe-app-watchOS
+        #CLANG_ENABLE_OBJC_WEAK: YES
+        #CODE_SIGN_STYLE: Automatic
+        #MTL_FAST_MATH: YES
+        SDKROOT: iphoneos
+        #SWIFT_VERSION: 5.0
   therbe-app_iOS:
     type: application
     platform: iOS
     dependencies:
       - target: therbe-framework-iOS
-      - target: therbe-app_watchOS
     info:
       path: Application/Info_iOS.plist
       properties:
@@ -38,7 +50,7 @@ targets:
     settings: 
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.brightdigit.therbe-app-macOS
-  therbe-app_watchOS-extension:
+  therbe-app-watchOS.watchkitapp.watchkitextension:
     type: watchkit2-extension
     platform: watchOS
     dependencies:
@@ -46,39 +58,35 @@ targets:
     info:
       path: Application/Info_watchOS_extension.plist
       properties:
-        CFBundleIdentifier: com.brightdigit.therbe-app-iOS.app-watchOS.extension
         CFBundleDisplayName: Therbe
         NSExtension:
           NSExtensionAttributes:
-            WKAppBundleIdentifier : com.brightdigit.therbe-app-iOS.app-watchOS
+            WKAppBundleIdentifier : com.brightdigit.therbe-app-watchOS.watchkitapp
           NSExtensionPointIdentifier: com.apple.watchkit
         WKExtensionDelegateClassName: $(PRODUCT_MODULE_NAME).ExtensionDelegate
+        WKWatchOnly: true
     sources:
       - Application/Sources/common
       - Application/Sources/watchOS/Extension
     settings: 
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.brightdigit.therbe-app-iOS.app-watchOS.extension
-  therbe-app_watchOS:
+        PRODUCT_BUNDLE_IDENTIFIER: com.brightdigit.therbe-app-watchOS.watchkitapp.watchkitextension
+  therbe-app-watchOS.watchkitapp:
     type: application.watchapp2
     platform: watchOS
     dependencies:
-      - target: therbe-app_watchOS-extension
+      - target: therbe-app-watchOS.watchkitapp.watchkitextension
     info:
       path: Application/Info_watchOS.plist
       properties:
-        CFBundleIdentifier: com.brightdigit.therbe-app-iOS.app-watchOS
         CFBundleDisplayName: Therbe
         WKWatchKitApp: true
-        WKCompanionAppBundleIdentifier: com.brightdigit.therbe-app-iOS
-        CFBundleIcons: {}
-        CFBundleIcons~ipad: {}
     sources:
       - path: Application/Sources/common
       - path: Application/Sources/watchOS/Application
     settings: 
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.brightdigit.therbe-app-watchOS
+        PRODUCT_BUNDLE_IDENTIFIER: com.brightdigit.therbe-app-watchOS.watchkitapp
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
   therbe-framework:
     name: therbe-framework-${platform}
