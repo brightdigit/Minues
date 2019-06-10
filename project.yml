@@ -1,4 +1,4 @@
-name: therbe
+name: therbe-temp
 options:
   generateEmptyDirectories: true
   createIntermediateGroups: true
@@ -11,11 +11,7 @@ targets:
     settings: 
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.brightdigit.therbe-app-watchOS
-        #CLANG_ENABLE_OBJC_WEAK: YES
-        #CODE_SIGN_STYLE: Automatic
-        #MTL_FAST_MATH: YES
         SDKROOT: iphoneos
-        #SWIFT_VERSION: 5.0
   therbe-app_iOS:
     type: application
     platform: iOS
@@ -33,6 +29,8 @@ targets:
     settings: 
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.brightdigit.therbe-app-iOS
+        SUPPORTS_UIKITFORMAC: true
+        DERIVE_UIKITFORMAC_PRODUCT_BUNDLE_IDENTIFIER: true
   therbe-app_macOS:
     type: application
     platform: macOS
@@ -102,4 +100,5 @@ targets:
     sources:
       - Framework/Sources/common
       - Framework/Sources/${platform}
+      - Framework/Generated/
         
