@@ -1,4 +1,6 @@
 name: therbe-temp
+settings:
+  DEVELOPMENT_TEAM: MLT7M394S7
 options:
   generateEmptyDirectories: true
   createIntermediateGroups: true
@@ -23,6 +25,14 @@ targets:
         CFBundleIdentifier: com.brightdigit.therbe-app-iOS
         CFBundleDisplayName: Therbe
         UILaunchStoryboardName: LaunchScreen
+    entitlements:
+      path: Entitlements/iOS.entitlements
+      properties:
+        aps-environment: development
+        com.apple.developer.icloud-container-identifiers: ['iCloud.com.brightdigit.therbe']
+        com.apple.developer.icloud-services: ['CloudKit']
+        com.apple.security.app-sandbox: true
+        com.apple.security.network.client: true
     sources:
       - path: Application/Sources/common
       - path: Application/Sources/iOS
@@ -42,17 +52,33 @@ targets:
         CFBundleIdentifier: com.brightdigit.therbe-app-macOS
         CFBundleDisplayName: Therbe
         NSPrincipalClass: $(TARGET_NAME:c99extidentifier).Application
+    entitlements:
+      path: Entitlements/macOS.entitlements
+      properties:
+        com.apple.developer.aps-environment: development
+        com.apple.developer.icloud-container-identifiers: ['iCloud.com.brightdigit.therbe']
+        com.apple.developer.icloud-services: ['CloudKit']
+        com.apple.security.app-sandbox: true
+        com.apple.security.network.client: true
     sources:
       - path: Application/Sources/common
       - path: Application/Sources/macOS
     settings: 
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.brightdigit.therbe-app-macOS
+        CODE_SIGN_IDENTITY: "Apple Development"
+        CODE_SIGN_STYLE: Automatic
   therbe-app-watchOS.watchkitapp.watchkitextension:
     type: watchkit2-extension
     platform: watchOS
     dependencies:
       - target: therbe-framework-watchOS
+    entitlements:
+      path: Entitlements/watchOS.entitlements
+      properties:
+        aps-environment: development
+        com.apple.developer.icloud-container-identifiers: ['iCloud.com.brightdigit.therbe']
+        com.apple.developer.icloud-services: ['CloudKit']
     info:
       path: Application/Info_watchOS_extension.plist
       properties:
@@ -69,6 +95,8 @@ targets:
     settings: 
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.brightdigit.therbe-app-watchOS.watchkitapp.watchkitextension
+        CODE_SIGN_IDENTITY: "Apple Development"
+        CODE_SIGN_STYLE: Automatic
   therbe-app-watchOS.watchkitapp:
     type: application.watchapp2
     platform: watchOS
@@ -93,6 +121,8 @@ targets:
     settings:
       base:
         PRODUCT_NAME: Therbe
+    dependencies:
+      - sdk: CloudKit.framework
     info:
       path: Framework/Info_${platform}.plist
       properties:
