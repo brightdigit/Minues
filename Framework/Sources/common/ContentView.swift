@@ -7,14 +7,17 @@
 
 import SwiftUI
 
+
+
 struct ContentView : View {
     var body: some View {
-        List(/*@START_MENU_TOKEN@*/0 ..< 5/*@END_MENU_TOKEN@*/) { item in
-            HStack {
-                
-                Text("Hello World")
-            }
-        }
+      
+      NavigationView {
+      List(Database.shared.bucketItems){
+        BucketItemRow(item: $0)
+      }
+      
+      }.navigationBarTitle(Text("Ideas"))
     }
 }
 

@@ -131,4 +131,5 @@ targets:
       - Framework/Sources/common
       - Framework/Sources/${platform}
       - Framework/Generated/
+      - Framework/Resources
         
