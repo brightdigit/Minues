@@ -10,20 +10,31 @@ import SwiftUI
 
 
 struct IdeaListView : View {
-    var body: some View {
+  var ideas : [IdeaProtocol]? {
+    didSet {
       
-      NavigationView {
-        List(Database.shared.ideas.identified(by: \.id)){
-          IdeaRowView(idea: $0)
-        }.navigationBarTitle(Text("Ideas"))
-      }
     }
+  }
+  
+  var body: some View {
+    ZStack{
+      NavigationView {
+        List(self.ideas.identified(by: \.id)){
+          IdeaRowView(idea: $0)
+          }.navigationBarTitle(Text("Ideas"))
+        }
+        .brightness(0.75)
+        .blur(radius: 3)
+      ActivityIndicator(style: .large)
+    }
+    
+  }
 }
 
 #if DEBUG
 struct IdeaListView_Previews : PreviewProvider {
-    static var previews: some View {
-        IdeaListView()
-    }
+  static var previews: some View {
+    IdeaListView()
+  }
 }
 #endif
