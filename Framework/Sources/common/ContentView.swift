@@ -10,21 +10,20 @@ import SwiftUI
 
 
 struct ContentView : View {
-    var body: some View {
-      
-      NavigationView {
-      List(Database.shared.bucketItems){
-        BucketItemRow(item: $0)
-      }
-      
-      }.navigationBarTitle(Text("Ideas"))
+  var body: some View {
+    NavigationView {
+      List(Database.shared.bucketItems) { item in
+        BucketItemRow(item: item)
+        }
+        .navigationBarTitle(Text("Landmarks"))
     }
+  }
 }
 
 #if DEBUG
 struct ContentView_Previews : PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+  static var previews: some View {
+    ContentView()
+  }
 }
 #endif
