@@ -9,7 +9,7 @@ import SwiftUI
 
 
 
-struct ContentView : View {
+struct IdeaRootView : View {
     var body: some View {
       
       NavigationView {
@@ -22,9 +22,9 @@ struct ContentView : View {
 }
 
 #if DEBUG
-struct ContentView_Previews : PreviewProvider {
+struct IdeaRootView_Previews : PreviewProvider {
     static var previews: some View {
-        ContentView()
+        IdeaRootView()
     }
 }
 #endif
