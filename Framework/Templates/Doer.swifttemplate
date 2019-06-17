@@ -23,6 +23,7 @@ let _<%= protocolType.name  %> = <%= protocolType.name %>Container()
 <% } %>
 func types<T>(implements: T.Type) -> [T]? {
 <% for protocolType in types.protocols { -%>
+
 if T.self == <%= protocolType.name %>.Type.self {
 return (_<%= protocolType.name  %>.types as! [T])
 }<% } %>
