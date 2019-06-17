@@ -15,8 +15,8 @@ struct IdeaListView : View {
       NavigationView {
         List(Database.shared.ideas.identified(by: \.id)){
           IdeaRowView(idea: $0)
-        }
-      }.navigationBarTitle(Text("Ideas"))
+        }.navigationBarTitle(Text("Ideas"))
+      }
     }
 }
 
