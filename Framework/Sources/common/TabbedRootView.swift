@@ -10,7 +10,7 @@ import SwiftUI
 struct TabbedRootView : View {
   var body: some View {
     TabbedView{
-      IdeaRootView()
+      IdeaListView()
         .tabItemLabel(Text("Ideas"))
       
     }

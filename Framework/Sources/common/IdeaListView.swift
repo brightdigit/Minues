@@ -9,22 +9,21 @@ import SwiftUI
 
 
 
-struct IdeaRootView : View {
+struct IdeaListView : View {
     var body: some View {
       
       NavigationView {
-      List(Database.shared.bucketItems){
-        BucketItemRow(item: $0)
-      }
-      
+        List(Database.shared.ideas.identified(by: \.id)){
+          IdeaRowView(idea: $0)
+        }
       }.navigationBarTitle(Text("Ideas"))
     }
 }
 
 #if DEBUG
-struct IdeaRootView_Previews : PreviewProvider {
+struct IdeaListView_Previews : PreviewProvider {
     static var previews: some View {
-        IdeaRootView()
+        IdeaListView()
     }
 }
 #endif
