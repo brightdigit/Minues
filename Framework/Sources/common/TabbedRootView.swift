@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import Combine
 
 struct TabbedRootView : View {
   var body: some View {
     TabbedView{
-      IdeaListView(ideas: Database.shared.ideas)
+      IdeaListView()
         .tabItemLabel(Text("Ideas"))
       
     }

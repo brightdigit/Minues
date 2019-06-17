@@ -11,24 +11,24 @@ struct InvalidDatabaseFileError : Error {
   
 }
 
-struct Database : DatabaseProtocol {
+struct JSONDatabase : DatabaseProtocol {
   let ideas: [IdeaProtocol]
   
   class BundleAccessor {
     
   }
-  static let shared : DatabaseProtocol  = try! Database()
+  //static let shared : DatabaseProtocol  = try! Database()
   static let jsonDecoder = JSONDecoder()
   
   
-  private init () throws {
+  internal init () throws {
     
     guard let bucketItemsURL = Bundle(for: BundleAccessor.self).url(forResource: "bucketItems", withExtension: "json") else {
       throw InvalidDatabaseFileError()
     }
     
     let data = try Data(contentsOf: bucketItemsURL)
-    let sourceIdeas = try Database.jsonDecoder.decode([Idea].self, from: data)
+    let sourceIdeas = try JSONDatabase.jsonDecoder.decode([Idea].self, from: data)
     self.ideas = [Idea](sourceIdeas.shuffled()[0...20])
   }
 }

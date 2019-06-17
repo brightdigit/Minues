@@ -23,9 +23,7 @@ struct IdeaRowView : View {
 struct IdeaRowView_Previews : PreviewProvider {
   static var previews: some View {
     Group{
-      IdeaRowView(idea:  Database.shared.ideas[0])
-        .previewLayout(.fixed(width: 300, height: 70))
-      IdeaRowView(idea:  Database.shared.ideas[1])
+      IdeaRowView(idea:  Idea(id: UUID(), title: "test"))
         .previewLayout(.fixed(width: 300, height: 70))
     }
   }

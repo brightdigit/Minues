@@ -8,5 +8,7 @@
 import Foundation
 
 protocol DatabaseProtocol {
+  init () throws
   var ideas : [IdeaProtocol] { get }
 }
+
