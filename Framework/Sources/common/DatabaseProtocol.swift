@@ -10,6 +10,6 @@ import Foundation
 protocol DatabaseProtocol {
   init () throws
   //var ideas : [IdeaProtocol] { get }
-  func ideas (_ completion: ([IdeaProtocol]) -> Void)
+  func ideas (_ completion: @escaping ([IdeaProtocol]) -> Void)
 }
 
