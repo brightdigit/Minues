@@ -32,7 +32,9 @@ struct JSONDatabase : DatabaseProtocol {
     self.ideas = [Idea](sourceIdeas.shuffled()[0...20])
   }
   
-  func ideas(_ completion: ([IdeaProtocol]) -> Void) {
-    completion(self.ideas)
+  func ideas(_ completion: @escaping ([IdeaProtocol]) -> Void) {
+    DispatchQueue.global().asyncAfter(deadline: .now() + 5.0) {
+      completion(self.ideas)
+    }
   }
 }

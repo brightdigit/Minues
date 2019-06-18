@@ -20,12 +20,12 @@ struct IdeaListView : View {
                     List(ideas.identified(by: \.id)){
                       IdeaRowView(idea: $0)
                       }.navigationBarTitle(Text("Ideas"))
-                  }
+                  }.transition(.opacity)
 
         )
         } ?? ViewBuilder.buildEither(second: ActivityIndicator(style: .large).onAppear(perform: {
           self.model.fetch()
-        }))
+        }).transition(.opacity))
     }
   }
 }
