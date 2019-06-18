@@ -31,4 +31,8 @@ struct JSONDatabase : DatabaseProtocol {
     let sourceIdeas = try JSONDatabase.jsonDecoder.decode([Idea].self, from: data)
     self.ideas = [Idea](sourceIdeas.shuffled()[0...20])
   }
+  
+  func ideas(_ completion: ([IdeaProtocol]) -> Void) {
+    completion(self.ideas)
+  }
 }

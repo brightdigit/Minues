@@ -18,4 +18,13 @@ final class IdeaListViewModel : BindableObject {
     }
   }
   
+  func fetch () {
+    database!.ideas({
+      ideas in
+      DispatchQueue.main.async{
+        self.ideas = ideas
+      }
+    })
+  }
+  
 }

@@ -23,7 +23,9 @@ struct IdeaListView : View {
                   }
 
         )
-      } ?? ViewBuilder.buildEither(second: ActivityIndicator(style: .large))
+        } ?? ViewBuilder.buildEither(second: ActivityIndicator(style: .large).onAppear(perform: {
+          self.model.fetch()
+        }))
     }
   }
 }

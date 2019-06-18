@@ -9,6 +9,7 @@ import Foundation
 
 protocol DatabaseProtocol {
   init () throws
-  var ideas : [IdeaProtocol] { get }
+  //var ideas : [IdeaProtocol] { get }
+  func ideas (_ completion: ([IdeaProtocol]) -> Void)
 }
 
