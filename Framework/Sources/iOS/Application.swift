@@ -7,18 +7,6 @@
 
 import UIKit
 
-/*
- 
-extension DoerProtocol {
-  static var types : [Self]? {
-    
-    return MetaContainer.shared.types(implements: Self.self.self)
-  }
-}
-*/
-
-
-
 public class Application : UIApplication {
   
 }
