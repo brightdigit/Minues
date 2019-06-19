@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 struct IdeaListView : View {
-  @EnvironmentObject var model : IdeaListViewModel
+  @EnvironmentObject var model : DataViewModel
   
   var body: some View {
     Group(){
@@ -33,7 +33,8 @@ struct IdeaListView : View {
 #if DEBUG
 struct IdeaListView_Previews : PreviewProvider {
   static var previews: some View {
-    IdeaListView().environmentObject(IdeaListViewModel())
+    
+    IdeaListView().environmentObject(DataViewModel(database: try! JSONDatabase()))
   }
 }
 #endif

@@ -19,10 +19,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
     
     // Use a UIHostingController as window root view controller
+    
     let types = MetaContainer.shared.types(implements: DatabaseProtocol.Type.self)
     let database = try! types!.first!.init()
+    let viewModel = DataViewModel(database: database)
     let window = UIWindow(frame: UIScreen.main.bounds)
-    window.rootViewController = UIHostingController(rootView: TabbedRootView().environmentObject(IdeaListViewModel()))
+    window.rootViewController = UIHostingController(rootView: TabbedRootView().environmentObject(viewModel))
     self.window = window
     window.makeKeyAndVisible()
   }

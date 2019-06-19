@@ -8,9 +8,13 @@
 import SwiftUI
 import Combine
 
-final class IdeaListViewModel : BindableObject {
-  let database = try! MetaContainer.shared.types(implements: DatabaseProtocol.Type.self)?.first?.init()
-  let didChange = PassthroughSubject<IdeaListViewModel, Never>()
+final class DataViewModel : BindableObject {
+  let database : DatabaseProtocol
+  let didChange = PassthroughSubject<DataViewModel, Never>()
+  
+  init (database: DatabaseProtocol) {
+    self.database = database
+  }
   
   var ideas : [IdeaProtocol]? {
     didSet {
@@ -19,7 +23,7 @@ final class IdeaListViewModel : BindableObject {
   }
   
   func fetch () {
-    database!.ideas({
+    database.ideas({
       ideas in
       DispatchQueue.main.async{
         self.ideas = ideas
