@@ -1,6 +1,6 @@
 
 therbe.xcodeproj: therbe-temp.xcodeproj Assets.xcassets
-	swift sh watchapp2-container.swift therbe-temp.xcodeproj therbe.xcodeproj
+	swift sh watchapp2-container.swift .therbe-temp.xcodeproj therbe.xcodeproj
 Assets.xcassets:
 	speculid --process AppIcon.speculid
 generated_sources:
