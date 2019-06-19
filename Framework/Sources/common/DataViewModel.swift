@@ -16,7 +16,7 @@ final class DataViewModel : BindableObject {
     self.database = database
   }
   
-  var ideas : [IdeaProtocol]? {
+  var ideas : Result<[IdeaProtocol], Error>? {
     didSet {
       didChange.send(self)
     }

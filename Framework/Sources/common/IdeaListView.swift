@@ -13,19 +13,20 @@ struct IdeaListView : View {
   
   var body: some View {
     Group(){
-      self.model.ideas.map{
-        ideas in
-        ViewBuilder.buildEither(first:
-                  NavigationView {
-                    List(ideas.identified(by: \.id)){
-                      IdeaRowView(idea: $0)
-                      }.navigationBarTitle(Text("Ideas"))
-                  }.transition(.opacity)
-
-        )
-        } ?? ViewBuilder.buildEither(second: ActivityIndicator(style: .large).onAppear(perform: {
-          self.model.fetch()
-        }).transition(.opacity))
+      ActivityIndicator(style: .large)
+//      self.model.ideas.map{
+//        ideas in
+//        ViewBuilder.buildEither(first:
+//                  NavigationView {
+//                    List(ideas.identified(by: \.id)){
+//                      IdeaRowView(idea: $0)
+//                      }.navigationBarTitle(Text("Ideas"))
+//                  }.transition(.opacity)
+//
+//        )
+//        } ?? ViewBuilder.buildEither(second: ActivityIndicator(style: .large).onAppear(perform: {
+//          self.model.fetch()
+//        }).transition(.opacity))
     }
   }
 }

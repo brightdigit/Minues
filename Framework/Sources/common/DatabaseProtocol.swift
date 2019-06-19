@@ -7,32 +7,9 @@
 
 import Foundation
 
-protocol DatabaseProtocol : Interchangable {
+protocol DatabaseProtocol  {
   init () throws
-  func ideas (_ completion: @escaping ([IdeaProtocol]) -> Void)
+  func ideas (_ completion: @escaping (Result<[IdeaProtocol], Error>) -> Void)
 }
 
 
-
-protocol Interchangable {
-  static func create () throws -> Interchangable
-}
-
-extension DatabaseProtocol {
-  static func create () throws -> Interchangable {
-    return try self.init()
-  }
-}
-struct Factory<ProtocolType : Interchangable> {
-  static func create () throws -> ProtocolType {
-    guard let types = MetaContainer.shared.types(implements: ProtocolType.Type.self) else {
-      fatalError()
-    }
-    
-    guard let type = types.first else {
-      fatalError()
-    }
-    
-    return try type.create() as! ProtocolType
-  }
-}
