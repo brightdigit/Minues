@@ -18,20 +18,25 @@ struct IdeaListView : View {
         ViewBuilder.buildEither(first: EmptyView())
         } ?? ViewBuilder.buildEither(second: ActivityIndicator(style: .large).onAppear(perform: {
           self.model.fetch()
-        }).transition(.opacity))
+        }))
     }
   }
 
-  var listView: some View {
-    let ideas = try? self.model.ideas?.get()
-    return Group(){
-      ideas.map{
-        ideas in
-        ViewBuilder.buildEither(first:
+  var listView: some View {    
+    let ideas : [IdeaProtocol]?
+    
+    if case let .success(actualIdeas) = self.model.ideas {
+      ideas = actualIdeas
+    } else {
+      ideas = nil
+    }
+    
+    return ideas.map{
+      ideas in
+        NavigationView {
           List(ideas.identified(by: \.id)) {
             IdeaRowView(idea: $0)
-        })
-      } ?? ViewBuilder.buildEither(second: EmptyView())
+            }.navigationBarTitle(Text("Ideas"))}
     }
   }
   
@@ -44,13 +49,8 @@ struct IdeaListView : View {
       error = nil
     }
     
-    return Group(){
-      error.map{
-        error in
-        ViewBuilder.buildEither(first:
-          Text(error.localizedDescription)
-        )
-        } ?? ViewBuilder.buildEither(second: EmptyView())
+    return error.map{
+      Text($0.localizedDescription)
     }
   }
   

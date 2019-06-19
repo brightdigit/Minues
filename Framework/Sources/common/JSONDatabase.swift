@@ -12,7 +12,7 @@ struct InvalidDatabaseFileError : Error {
 }
 
 struct JSONDatabase : DatabaseProtocol {
-  let ideas: [IdeaProtocol]
+  var ideas: [IdeaProtocol]
   
   class BundleAccessor {
     
