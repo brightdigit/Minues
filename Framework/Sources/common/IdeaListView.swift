@@ -11,22 +11,25 @@ import Combine
 struct IdeaListView : View {
   @EnvironmentObject var model : DataViewModel
   
+  
   var body: some View {
     Group(){
-      ActivityIndicator(style: .large)
-//      self.model.ideas.map{
-//        ideas in
+      
+      self.model.ideas.map{
+        result in
+        ViewBuilder.buildEither(first: ActivityIndicator(style: .medium))
+        
 //        ViewBuilder.buildEither(first:
 //                  NavigationView {
 //                    List(ideas.identified(by: \.id)){
 //                      IdeaRowView(idea: $0)
 //                      }.navigationBarTitle(Text("Ideas"))
 //                  }.transition(.opacity)
-//
-//        )
-//        } ?? ViewBuilder.buildEither(second: ActivityIndicator(style: .large).onAppear(perform: {
-//          self.model.fetch()
-//        }).transition(.opacity))
+
+        //)
+        } ?? ViewBuilder.buildEither(second: ActivityIndicator(style: .large).onAppear(perform: {
+          self.model.fetch()
+        }).transition(.opacity))
     }
   }
 }
