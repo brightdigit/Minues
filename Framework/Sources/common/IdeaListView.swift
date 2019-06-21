@@ -18,7 +18,7 @@ struct IdeaListView : View {
         ViewBuilder.buildEither(first: EmptyView())
         } ?? ViewBuilder.buildEither(second: ActivityIndicator(style: .large).onAppear(perform: {
           self.model.fetch()
-        }))
+        }).transition(.opacity))
     }
   }
 
@@ -36,7 +36,7 @@ struct IdeaListView : View {
         NavigationView {
           List(ideas.identified(by: \.id)) {
             IdeaRowView(idea: $0)
-            }.navigationBarTitle(Text("Ideas"))}
+            }.navigationBarTitle(Text("Ideas"))}.transition(.opacity)
     }
   }
   
