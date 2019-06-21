@@ -5,6 +5,12 @@ options:
   generateEmptyDirectories: true
   createIntermediateGroups: true
 targets:
+  therbe-faker:
+    type: tool
+    platform: macOS   
+    sources:
+      - path: Application/Sources/tool
+      - path: Framework/Sources/common/Data
   therbe-app-watchOS:
     type: application
     platform: watchOS

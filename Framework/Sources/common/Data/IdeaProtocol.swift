@@ -9,5 +9,5 @@ import SwiftUI
 
 protocol IdeaProtocol {
   var id: UUID { get }
-  var title : String { get }
+  var name : String { get }
 }

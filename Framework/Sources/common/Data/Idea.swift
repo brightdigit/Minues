@@ -10,10 +10,12 @@ import SwiftUI
 
 struct Idea : IdeaProtocol, Codable, Identifiable {
   let id: UUID
-  let title : String
+  let name : String
+  let due: Date? = nil
+  let priority : Float? = nil
   
-  init(id: UUID, title: String) {
+  init(id: UUID, name: String) {
     self.id = id
-    self.title = title
+    self.name = name
   }
 }

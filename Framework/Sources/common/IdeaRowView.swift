@@ -14,7 +14,7 @@ struct IdeaRowView : View {
   var body: some View {
     
     HStack {
-      Text(self.idea.title)
+      Text(self.idea.name)
     }
   }
 }
@@ -23,7 +23,7 @@ struct IdeaRowView : View {
 struct IdeaRowView_Previews : PreviewProvider {
   static var previews: some View {
     Group{
-      IdeaRowView(idea:  Idea(id: UUID(), title: "test"))
+      IdeaRowView(idea:  Idea(id: UUID(), name: "test"))
         .previewLayout(.fixed(width: 300, height: 70))
     }
   }

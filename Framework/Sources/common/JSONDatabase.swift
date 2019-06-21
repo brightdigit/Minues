@@ -12,7 +12,7 @@ struct InvalidDatabaseFileError : Error {
 }
 
 struct JSONDatabase : DatabaseProtocol {
-  var ideas: [IdeaProtocol]
+  var dataset : Dataset
   
   class BundleAccessor {
     
@@ -23,18 +23,17 @@ struct JSONDatabase : DatabaseProtocol {
   
   internal init () throws {
     
-    guard let bucketItemsURL = Bundle(for: BundleAccessor.self).url(forResource: "bucketItems", withExtension: "json") else {
+    guard let datasetURL = Bundle(for: BundleAccessor.self).url(forResource: "dataset", withExtension: "json") else {
       throw InvalidDatabaseFileError()
     }
     
-    let data = try Data(contentsOf: bucketItemsURL)
-    let sourceIdeas = try JSONDatabase.jsonDecoder.decode([Idea].self, from: data)
-    self.ideas = [Idea](sourceIdeas.shuffled()[0...20])
+    let data = try Data(contentsOf: datasetURL)
+    self.dataset = try JSONDatabase.jsonDecoder.decode(Dataset.self, from: data)
   }
   
   func ideas(_ completion: @escaping (Result<[IdeaProtocol], Error>) -> Void) {
     DispatchQueue.global().asyncAfter(deadline: .now() + 5.0) {
-      completion(.success(self.ideas))
+      completion(.success(self.dataset.ideas))
     }
   }
 }
