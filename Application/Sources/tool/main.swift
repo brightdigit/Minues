@@ -11,7 +11,7 @@ let numberOfIdeas = 20...40
 let numberOfProjects = 3...7
 
 let actualNumberOfIdeas = numberOfIdeas.randomElement()!
-let actualNumberOfProjects = numberOfIdeas.randomElement()!
+let actualNumberOfProjects = numberOfProjects.randomElement()!
 
 let phrases = phrasesText.components(separatedBy: .newlines).map{ $0.trimmingCharacters(in: .whitespacesAndNewlines)}
 
