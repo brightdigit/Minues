@@ -12,7 +12,11 @@ struct TabbedRootView : View {
   var body: some View {
     TabbedView{
       IdeaListView()
-        .tabItemLabel(Text("Ideas"))
+        .tabItemLabel(
+          VStack{
+            Image("Idea")
+            Text("Ideas")
+          })
       
     }
   }
