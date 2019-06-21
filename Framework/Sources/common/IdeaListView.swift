@@ -17,7 +17,7 @@ struct IdeaListView : View {
         result in
         ViewBuilder.buildEither(first: EmptyView())
         } ?? ViewBuilder.buildEither(second: ActivityIndicator(style: .large).onAppear(perform: {
-          self.model.fetch()
+          self.model.fetchIdeas()
         }).transition(.opacity))
     }
   }

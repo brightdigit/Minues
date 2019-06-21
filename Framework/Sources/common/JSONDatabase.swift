@@ -36,4 +36,10 @@ struct JSONDatabase : DatabaseProtocol {
       completion(.success(self.dataset.ideas))
     }
   }
+  
+  func projects(_ completion: @escaping (Result<[ProjectProtocol], Error>) -> Void) {
+    DispatchQueue.global().asyncAfter(deadline: .now() + 5.0) {
+      completion(.success(self.dataset.projects))
+    }
+  }
 }

@@ -22,7 +22,13 @@ final class DataViewModel : BindableObject {
     }
   }
   
-  func fetch () {
+  var projects : Result<[ProjectProtocol], Error>? {
+    didSet {
+      didChange.send(self)
+    }
+  }
+  
+  func fetchIdeas () {
     database.ideas({
       ideas in
       DispatchQueue.main.async{
@@ -30,5 +36,15 @@ final class DataViewModel : BindableObject {
       }
     })
   }
+  
+  func fetchProjects () {
+    database.projects({
+      projects in
+      DispatchQueue.main.async{
+        self.projects = projects
+      }
+    })
+  }
+  
   
 }

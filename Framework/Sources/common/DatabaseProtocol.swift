@@ -10,6 +10,7 @@ import Foundation
 protocol DatabaseProtocol  {
   init () throws
   func ideas (_ completion: @escaping (Result<[IdeaProtocol], Error>) -> Void)
+  func projects (_ completion: @escaping (Result<[ProjectProtocol], Error>) -> Void)
 }
 
 

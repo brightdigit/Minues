@@ -16,8 +16,14 @@ struct TabbedRootView : View {
           VStack{
             Image("Idea")
             Text("Ideas")
-          })
-      
+          }).tag(0)
+      ProjectListView()
+        .tabItemLabel(
+          VStack{
+            Image("Project")
+            Text("Projects")
+          }
+      ).tag(1)
     }
   }
 }

@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Project : Codable {
+struct Project : Codable, ProjectProtocol {
+  let id: UUID  
   let name : String
   let ideaId : UUID
 }

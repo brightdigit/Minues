@@ -16,12 +16,12 @@ let actualNumberOfProjects = numberOfIdeas.randomElement()!
 let phrases = phrasesText.components(separatedBy: .newlines).map{ $0.trimmingCharacters(in: .whitespacesAndNewlines)}
 
 let ideas = (1...actualNumberOfIdeas).map{_ in
-  Idea(id: UUID(), title: phrases.randomElement()!)
+  Idea(id: UUID(), name: phrases.randomElement()!)
 }
 
 let projects : [Project] = (1...actualNumberOfProjects).map{_ in
   let idea = ideas.randomElement()!
-  return Project(name: idea.name, ideaId: idea.id)
+  return Project(id: UUID(), name: idea.name, ideaId: idea.id)
 }
 
 let dataset = Dataset(projects: projects, ideas: ideas)
