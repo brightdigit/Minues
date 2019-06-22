@@ -14,6 +14,7 @@ final class DataViewModel : BindableObject {
   
   init (database: DatabaseProtocol) {
     self.database = database
+    self.fetchIdeasSync()
   }
   
   var ideas : Result<[IdeaProtocol], Error>? {
@@ -44,6 +45,12 @@ final class DataViewModel : BindableObject {
         self.projects = projects
       }
     })
+  }
+  
+  func fetchIdeasSync () {
+    if let databaseSync = database as? DatabaseSyncProtocol {
+      self.ideas = databaseSync.ideas
+    }
   }
   
   

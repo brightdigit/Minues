@@ -11,7 +11,11 @@ struct InvalidDatabaseFileError : Error {
   
 }
 
-struct JSONDatabase : DatabaseProtocol {
+struct JSONDatabase : DatabaseProtocol, DatabaseSyncProtocol {
+  var ideas: Result<[IdeaProtocol], Error> {
+    return .success( dataset.ideas)
+  }
+  
   var dataset : Dataset
   
   class BundleAccessor {
