@@ -22,7 +22,9 @@ struct IdeaListView : View {
     }
   }
 
-  var listView: some View {    
+  var listView: some View {
+  
+    
     let ideas : [IdeaProtocol]?
     
     if case let .success(actualIdeas) = self.model.ideas {
@@ -35,7 +37,10 @@ struct IdeaListView : View {
       ideas in
         NavigationView {
           List(ideas.identified(by: \.id)) {
-            IdeaRowView(idea: $0)
+            idea in
+            IdeaRowView(idea: idea).longPressAction({
+              print(idea.name)
+            })
             }.navigationBarTitle(Text("Ideas"))}.transition(.opacity)
     }
   }
