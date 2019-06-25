@@ -76,8 +76,9 @@ struct IdeaListView : View {
 #if DEBUG
 struct IdeaListView_Previews : PreviewProvider {
   static var previews: some View {
-    
-    IdeaListView().environmentObject(DataViewModel(database: try! JSONDatabase()))
+    let database = try! JSONDatabase()
+   let editId = (try? database.ideas.get())?.randomElement()?.id
+   return IdeaListView(editingIdeaId: editId).environmentObject(DataViewModel(database: database))
   }
 }
 #endif

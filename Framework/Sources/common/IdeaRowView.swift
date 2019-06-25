@@ -15,12 +15,21 @@ struct IdeaRowView : View {
   var body: some View {
     
     HStack {
-      Text(self.idea.name)
+      Text(self.idea.name).layoutPriority(-200)
       if editMode {
         Button(action: {
           print(self.idea.name)
         }){
-          Text("Project")
+          HStack{
+            ZStack{
+              RoundedRectangle(cornerRadius: 10.0).foregroundColor(.red)
+              Text("Project").color(.white).padding(5.0)
+            }
+            ZStack{
+              RoundedRectangle(cornerRadius: 10.0).foregroundColor(.red)
+              Text("Habit").color(.white)
+            }
+          }
         }
       }
     }
@@ -31,7 +40,7 @@ struct IdeaRowView : View {
 struct IdeaRowView_Previews : PreviewProvider {
   static var previews: some View {
     Group{
-      IdeaRowView(idea:  Idea(id: UUID(), name: "test"))
+      IdeaRowView(idea:  Idea(id: UUID(), name: "Lorem Ipsum Lorem Ipsum Lorem Ipsum"), editMode: true)
         .previewLayout(.fixed(width: 300, height: 70))
     }
   }
