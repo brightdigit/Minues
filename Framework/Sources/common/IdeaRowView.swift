@@ -11,10 +11,18 @@ import SwiftUI
 
 struct IdeaRowView : View {
   var idea : IdeaProtocol
+  var editMode : Bool = false
   var body: some View {
     
     HStack {
       Text(self.idea.name)
+      if editMode {
+        Button(action: {
+          print(self.idea.name)
+        }){
+          Text("Project")
+        }
+      }
     }
   }
 }

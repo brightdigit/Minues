@@ -11,6 +11,8 @@ import Combine
 struct IdeaListView : View {
   @EnvironmentObject var model : DataViewModel
   
+  @State var editingIdeaId : UUID? = nil
+  
   var activityView: some View {
     Group(){
       self.model.ideas.map{
@@ -21,10 +23,12 @@ struct IdeaListView : View {
         }).transition(.opacity))
     }
   }
+  
+  func updateEditingId (_ ideaId : UUID) {
+    self.editingIdeaId = ideaId
+  }
 
   var listView: some View {
-  
-    
     let ideas : [IdeaProtocol]?
     
     if case let .success(actualIdeas) = self.model.ideas {
@@ -38,8 +42,9 @@ struct IdeaListView : View {
         NavigationView {
           List(ideas.identified(by: \.id)) {
             idea in
-            IdeaRowView(idea: idea).longPressAction({
-              print(idea.name)
+            IdeaRowView(idea: idea, editMode: idea.id == self.editingIdeaId ).gesture(DragGesture()
+              .onEnded{_ in
+                self.updateEditingId(idea.id)
             })
             }.navigationBarTitle(Text("Ideas"))}.transition(.opacity)
     }
