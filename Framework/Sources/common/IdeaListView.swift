@@ -1,4 +1,4 @@
-//
+  //
 //  ContentView.swift
 //  minues-ios-app
 //
@@ -23,10 +23,6 @@ struct IdeaListView : View {
         }).transition(.opacity))
     }
   }
-  
-  func updateEditingId (_ ideaId : UUID) {
-    self.editingIdeaId = ideaId
-  }
 
   var listView: some View {
     let ideas : [IdeaProtocol]?
@@ -44,8 +40,18 @@ struct IdeaListView : View {
             idea in
             IdeaRowView(idea: idea, editMode: idea.id == self.editingIdeaId ).gesture(DragGesture()
               .onEnded{_ in
-                self.updateEditingId(idea.id)
-            })
+                withAnimation(.basic(duration: 4)) {
+                  self.editingIdeaId = idea.id
+                }
+            }).gesture(TapGesture().onEnded({
+              if idea.id == self.editingIdeaId {
+                
+                withAnimation(.basic(duration: 4)) {
+                   self.editingIdeaId = nil
+                }
+               
+              }
+            }))
             }.navigationBarTitle(Text("Ideas"))}.transition(.opacity)
     }
   }
