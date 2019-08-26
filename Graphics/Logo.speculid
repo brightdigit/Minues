@@ -1,0 +1,4 @@
+{
+  "set" : "../therbe-ios-app/Assets.xcassets/Logo.imageset",
+  "source" : "svg/cherry-tree.svg"
+}

@@ -1,0 +1,6 @@
+{
+  "set" : "../therbe-ios-app/Assets.xcassets/AppIcon.appiconset",
+  "source" : "svg/cherry-tree.svg",
+  "background" : "#FFFFFFFF",
+  "remove-alpha" : true
+}

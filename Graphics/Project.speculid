@@ -1,0 +1,5 @@
+{
+  "set" : "../therbe-ios-app/Assets.xcassets/Icons/Project.imageset",
+  "source" : "svg/deadline.svg",
+  "geometry" : "30"
+}

@@ -1,0 +1,5 @@
+{
+  "set" : "../therbe-ios-app/Assets.xcassets/Icons/Idea.imageset",
+  "source" : "svg/1440144-creative-tools/030-idea.svg",
+  "geometry" : "30"
+}
