@@ -19,7 +19,7 @@ public class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     if let windowScene = scene as? UIWindowScene {
       let window = UIWindow(windowScene: windowScene)
       // window.rootViewController = UIHostingController(rootView: SiteList(sites: [Site]()))
-      window.rootViewController = UITableViewController(style: .plain)
+      window.rootViewController = IdeasTableViewController()
       self.window = window
       window.makeKeyAndVisible()
     }
