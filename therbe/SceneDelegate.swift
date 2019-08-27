@@ -5,7 +5,8 @@
 //  Created by Leo Dion on 8/26/19.
 //
 
-import UIKit
+import SwiftUI
+import Fakery
 
 public class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -16,10 +17,15 @@ public class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+    let data : [Idea] = {
+      faker in
+      (1...Int.random(in: 15...25)).map{_ in Idea(id: UUID(), name: faker.lorem.sentence())
+        }
+    }(Faker(locale: "en-US"))
     if let windowScene = scene as? UIWindowScene {
       let window = UIWindow(windowScene: windowScene)
       // window.rootViewController = UIHostingController(rootView: SiteList(sites: [Site]()))
-      window.rootViewController = IdeasTableViewController()
+      window.rootViewController = UIHostingController(rootView: RootView(ideas: data))
       self.window = window
       window.makeKeyAndVisible()
     }

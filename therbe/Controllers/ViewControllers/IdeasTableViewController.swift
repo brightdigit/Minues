@@ -50,10 +50,10 @@ class IdeasTableViewController: UITableViewController {
     self.addChild(hostingController)
     cell.contentView.addSubview(hostingController.view)
     hostingController.view.translatesAutoresizingMaskIntoConstraints = false
-    cell.contentView.addConstraint(NSLayoutConstraint(item: hostingController.view!, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: cell.contentView, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1.0, constant: 0.0))
-    cell.contentView.addConstraint(NSLayoutConstraint(item: hostingController.view!, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: cell.contentView, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1.0, constant: 0.0))
-    cell.contentView.addConstraint(NSLayoutConstraint(item: hostingController.view!, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: cell.contentView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1.0, constant: 0.0))
-    cell.contentView.addConstraint(NSLayoutConstraint(item: hostingController.view!, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: cell.contentView, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1.0, constant: 0.0))
+    cell.contentView.addConstraint(NSLayoutConstraint(item: hostingController.view!, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: cell.contentView, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1.0, constant: 20.0))
+    cell.contentView.addConstraint(NSLayoutConstraint(item: hostingController.view!, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: cell.contentView, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1.0, constant: 20.0))
+    cell.contentView.addConstraint(NSLayoutConstraint(item: hostingController.view!, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: cell.contentView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1.0, constant: 20.0))
+    cell.contentView.addConstraint(NSLayoutConstraint(item: hostingController.view!, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: cell.contentView, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1.0, constant: 20.0))
 
     hostingController.didMove(toParent: self)
     hostingController.view.layoutIfNeeded()
